@@ -1,81 +1,82 @@
-FREE AI SKILLS FOR DEVELOPERS
+# FREE AI SKILLS FOR DEVELOPERS
 
-«A curated open-source library of structured AI skills for practical software development workflows.»
+> A curated open-source library of structured AI skills for practical software development workflows.
 
-""License: MIT" (https://img.shields.io/badge/License-MIT-blue.svg)" (LICENSE)
-""Skills" (https://img.shields.io/badge/Skills-132-blueviolet.svg)" (skills/)
-""PRs Welcome" (https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)" (CONTRIBUTING.md)
-""GitHub" (https://img.shields.io/badge/GitHub-zenixxdev-black.svg)" (https://github.com/zenixxdev/FREE-AI-SKILLS-FOR-DEVELOPERS)
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Skills: 132](https://img.shields.io/badge/Skills-132-blueviolet.svg)](skills/)
+[![PRs Welcome](https://img.shields.io/badge/PRs-Welcome-brightgreen.svg)](CONTRIBUTING.md)
+[![GitHub](https://img.shields.io/badge/GitHub-zenixxdev-black.svg)](https://github.com/zenixxdev/FREE-AI-SKILLS-FOR-DEVELOPERS)
 
-FREE AI SKILLS FOR DEVELOPERS is a collection of reusable "SKILL.md" files that give AI coding assistants structured instructions for common software engineering tasks.
+FREE AI SKILLS FOR DEVELOPERS is a collection of reusable `SKILL.md` files that provide AI coding assistants with structured instructions for common software engineering tasks.
 
 Instead of relying on vague, one-line prompts, each skill provides context, workflow guidance, constraints, expected outcomes, and validation criteria.
 
 ---
 
-Table of Contents
+## Table of Contents
 
-- "Why This Exists" (#why-this-exists)
-- "What Is an AI Skill?" (#what-is-an-ai-skill)
-- "Why Structured Skills?" (#why-structured-skills)
-- "Repository Structure" (#repository-structure)
-- "How to Use a Skill" (#how-to-use-a-skill)
-- "Real-World Example" (#real-world-example)
-- "Skill Specification" (#skill-specification)
-- "Skill Quality Standards" (#skill-quality-standards)
-- "Contributing" (#contributing)
-- "Security" (#security)
-- "License" (#license)
+- [Why This Exists](#why-this-exists)
+- [What Is an AI Skill?](#what-is-an-ai-skill)
+- [Why Structured Skills?](#why-structured-skills)
+- [Repository Structure](#repository-structure)
+- [How to Use a Skill](#how-to-use-a-skill)
+- [Real-World Example](#real-world-example)
+- [Skill Specification](#skill-specification)
+- [Skill Quality Standards](#skill-quality-standards)
+- [Contributing](#contributing)
+- [Security](#security)
+- [License](#license)
 
 ---
 
-Why This Exists
+## Why This Exists
 
 AI coding assistants can generate code quickly, but the quality of the result depends heavily on the context and instructions they receive.
 
 A request such as:
 
-«"Build an authentication system."»
+> Build an authentication system.
 
 does not define important engineering considerations such as:
 
-- existing project architecture
-- security requirements
-- validation rules
-- error handling
-- edge cases
-- testing expectations
-- deployment constraints
-- compatibility with the existing codebase
+- Existing project architecture
+- Security requirements
+- Validation rules
+- Error handling
+- Edge cases
+- Testing expectations
+- Deployment constraints
+- Compatibility with the existing codebase
 
-This repository aims to provide reusable instructions that make those expectations explicit.
+This repository provides reusable instructions that make those expectations explicit.
 
 The goal is simple:
 
-Give developers better building blocks for AI-assisted software engineering.
+**Give developers better building blocks for AI-assisted software engineering.**
 
 ---
 
-What Is an AI Skill?
+## What Is an AI Skill?
 
-An AI Skill is a structured Markdown document that provides an AI assistant with a repeatable procedure for handling a specific development task.
+An **AI Skill** is a structured Markdown document that provides an AI assistant with a repeatable procedure for handling a specific development task.
 
-A good skill can define:
+A skill can define:
 
-- when the skill should be used
-- what context should be inspected
-- what information is required
-- what steps should be followed
-- what constraints must be respected
-- what mistakes should be avoided
-- what the expected result should look like
-- how the result should be validated
+- When the skill should be used
+- What context should be inspected
+- What information is required
+- What steps should be followed
+- What constraints must be respected
+- What mistakes should be avoided
+- What the expected result should look like
+- How the result should be validated
 
 Skills are stored as:
 
+```text
 SKILL.md
 
-This makes them easy to read, copy, review, version, share, and integrate into different AI-assisted development workflows.
+This makes them easy to read, review, version, share, and integrate into AI-assisted development workflows.
 
 ---
 
@@ -171,14 +172,14 @@ Skills work best when the AI can inspect the actual project.
 
 Depending on the tool you use, provide access to:
 
-- source files
-- package configuration
-- database schema
+- Source files
+- Package configuration
+- Database schema
 - API definitions
-- existing components
-- tests
-- project conventions
-- relevant documentation
+- Existing components
+- Tests
+- Project conventions
+- Relevant documentation
 
 The skill provides the workflow; your project provides the context.
 
@@ -188,14 +189,14 @@ Do not treat generated code as automatically correct.
 
 Run the appropriate:
 
-- tests
-- type checks
-- linters
-- builds
-- security checks
-- integration checks
+- Tests
+- Type checks
+- Linters
+- Builds
+- Security checks
+- Integration checks
 
-and verify the result against the skill's validation criteria.
+Then verify the result against the skill's validation criteria.
 
 ---
 
@@ -205,11 +206,11 @@ Scenario: Avoiding N+1 Queries in GraphQL
 
 Imagine an existing GraphQL API that returns blog posts and their authors.
 
-A request for 50 posts causes:
+A request for 50 posts can result in:
 
-1 query  → fetch posts
-50 queries → fetch each author
-------------------------------
+1 query   -> fetch posts
+50 queries -> fetch each author
+-------------------------------
 51 queries total
 
 The relevant skill is:
@@ -309,29 +310,29 @@ Context Before Changes
 
 Skills should encourage AI assistants to inspect the existing project before modifying it.
 
-That can include:
+This can include:
 
-- architecture
-- dependencies
-- naming conventions
-- existing abstractions
+- Architecture
+- Dependencies
+- Naming conventions
+- Existing abstractions
 - APIs
-- tests
-- configuration
-- database schema
+- Tests
+- Configuration
+- Database schema
 
 Defensive Engineering
 
-Where applicable, skills should explicitly account for:
+Where applicable, skills should account for:
 
-- input validation
-- authentication
-- authorization
-- secure secret handling
-- safe database access
-- dependency safety
-- error handling
-- least-privilege principles
+- Input validation
+- Authentication
+- Authorization
+- Secure secret handling
+- Safe database access
+- Dependency safety
+- Error handling
+- Least-privilege principles
 
 Validation
 
@@ -352,13 +353,13 @@ Skills should not exist simply to increase the file count.
 
 Avoid:
 
-- generic advice
-- repetitive skills
-- meaningless names
-- copied boilerplate
-- unsupported technical claims
-- incomplete examples
-- placeholder implementations
+- Generic advice
+- Repetitive skills
+- Meaningless names
+- Copied boilerplate
+- Unsupported technical claims
+- Incomplete examples
+- Placeholder implementations
 
 Every skill should provide a clear reason to exist.
 
@@ -377,12 +378,12 @@ Before submitting a new skill, review:
 
 A good contribution should be:
 
-- focused on a real developer task
-- technically accurate
-- independently useful
-- clearly organized
-- validated against realistic scenarios
-- consistent with the repository structure
+- Focused on a real developer task
+- Technically accurate
+- Independently useful
+- Clearly organized
+- Validated against realistic scenarios
+- Consistent with the repository structure
 
 ---
 
@@ -394,12 +395,12 @@ Please review "SECURITY.md" (SECURITY.md) for security reporting guidance.
 
 Never commit:
 
-- passwords
+- Passwords
 - API keys
-- access tokens
-- private credentials
-- production secrets
-- sensitive user data
+- Access tokens
+- Private credentials
+- Production secrets
+- Sensitive user data
 
 ---
 
