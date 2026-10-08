@@ -73,23 +73,23 @@ A skill can define:
 
 Skills are stored as:
 
-```text
-SKILL.md
+`SKILL.md`
 
 This makes them easy to read, review, version, share, and integrate into AI-assisted development workflows.
 
 ---
 
-Why Structured Skills?
+## Why Structured Skills?
 
-Area| Generic Prompt| Structured Skill
-Context| Often unspecified| Explicit context requirements
-Workflow| Usually minimal| Step-by-step guidance
-Constraints| Easy to overlook| Clearly defined guardrails
-Edge Cases| Often missed| Deliberately considered
-Validation| Usually absent| Built into the skill
-Reusability| Often rewritten| Version-controlled and reusable
-Collaboration| Difficult to standardize| Consistent format for contributors
+| Area | Generic Prompt | Structured Skill |
+| --- | --- | --- |
+| Context | Often unspecified | Explicit context requirements |
+| Workflow | Usually minimal | Step-by-step guidance |
+| Constraints | Easy to overlook | Clearly defined guardrails |
+| Edge Cases | Often missed | Deliberately considered |
+| Validation | Usually absent | Built into the skill |
+| Reusability | Often rewritten | Version-controlled and reusable |
+| Collaboration | Difficult to standardize | Consistent format for contributors |
 
 The purpose is not to replace developer judgment.
 
@@ -97,10 +97,11 @@ The purpose is to provide AI systems with better engineering instructions to wor
 
 ---
 
-Repository Structure
+## Repository Structure
 
 The repository is organized into technical domains, with technology-specific groupings and concrete skills underneath them.
 
+```text
 skills/
 ├── ui/
 ├── ux/
@@ -126,35 +127,39 @@ skills/
 ├── architecture/
 ├── documentation/
 └── general/
+```
 
 A typical skill follows this pattern:
 
+```text
 skills/
 └── frontend/
     └── react/
         └── component-architecture/
             └── SKILL.md
+```
 
 Technology groupings keep the repository organized, while individual skill directories contain the actual reusable instructions.
 
 ---
 
-How to Use a Skill
+## How to Use a Skill
 
-1. Find a Relevant Skill
+### 1. Find a Relevant Skill
 
-Browse the "skills/" directory and select the skill that matches your task.
+Browse the `skills/` directory and select the skill that matches your task.
 
 For example:
 
-skills/api/rest/idempotent-endpoint-design/SKILL.md
+`skills/api/rest/idempotent-endpoint-design/SKILL.md`
 
-2. Read or Copy the Skill
+### 2. Read or Copy the Skill
 
-Open the "SKILL.md" file and provide its contents to your AI coding assistant along with your project-specific request.
+Open the `SKILL.md` file and provide its contents to your AI coding assistant along with your project-specific request.
 
 Example:
 
+```text
 [Paste the contents of SKILL.md here]
 
 TASK:
@@ -163,10 +168,10 @@ I have an Express.js checkout endpoint:
 
 POST /api/orders
 
-Implement idempotency using an Idempotency-Key header
-with Redis while preserving the existing API contract.
+Implement idempotency using an Idempotency-Key header with Redis while preserving the existing API contract.
+```
 
-3. Provide Project Context
+### 3. Provide Project Context
 
 Skills work best when the AI can inspect the actual project.
 
@@ -183,7 +188,7 @@ Depending on the tool you use, provide access to:
 
 The skill provides the workflow; your project provides the context.
 
-4. Validate the Result
+### 4. Validate the Result
 
 Do not treat generated code as automatically correct.
 
@@ -200,22 +205,24 @@ Then verify the result against the skill's validation criteria.
 
 ---
 
-Real-World Example
+## Real-World Example
 
-Scenario: Avoiding N+1 Queries in GraphQL
+### Scenario: Avoiding N+1 Queries in GraphQL
 
 Imagine an existing GraphQL API that returns blog posts and their authors.
 
 A request for 50 posts can result in:
 
-1 query   -> fetch posts
-50 queries -> fetch each author
--------------------------------
+```text
+1 query    → fetch posts
+50 queries → fetch each author
+------------------------------
 51 queries total
+```
 
 The relevant skill is:
 
-skills/api/graphql/schema-design-and-dataloaders/SKILL.md
+`skills/api/graphql/schema-design-and-dataloaders/SKILL.md`
 
 A structured skill can guide the AI to:
 
@@ -227,20 +234,21 @@ A structured skill can guide the AI to:
 6. Add or update tests for batched resolution.
 7. Verify the resulting query behavior.
 
-The important difference is that the skill describes an engineering workflow, not merely a desired end result.
+The important difference is that the skill describes an **engineering workflow**, not merely a desired end result.
 
 ---
 
-Skill Specification
+## Skill Specification
 
 Every skill follows the structure defined in:
 
-templates/SKILL.md
+`templates/SKILL.md`
 
-Metadata
+### Metadata
 
 A typical skill begins with YAML frontmatter:
 
+```yaml
 ---
 name: component-architecture
 description: Define a reusable component architecture for a frontend application.
@@ -255,11 +263,13 @@ tags:
   - architecture
   - components
 ---
+```
 
-Core Sections
+### Core Sections
 
 Skills should normally contain:
 
+```text
 ## Purpose
 
 ## When to Use
@@ -279,34 +289,39 @@ Skills should normally contain:
 ## Common Mistakes & Antipatterns
 
 ## Concrete Real-World Example
+```
 
 Not every skill needs identical wording or identical depth, but the structure should remain predictable and useful.
 
 ---
 
-Skill Quality Standards
+## Skill Quality Standards
 
 The repository prioritizes practical value and technical quality.
 
-Useful Skills
+### Useful Skills
 
 A useful skill should provide actionable instructions.
 
 Weak:
 
+```text
 Write clean code.
 Use best practices.
 Handle errors properly.
+```
 
 Strong:
 
+```text
 Inspect the existing error-handling conventions first.
 Identify all expected failure states.
 Preserve the project's existing error response format.
 Handle validation, dependency failures, timeouts, and unexpected exceptions separately.
 Add tests for each meaningful failure path.
+```
 
-Context Before Changes
+### Context Before Changes
 
 Skills should encourage AI assistants to inspect the existing project before modifying it.
 
@@ -321,7 +336,7 @@ This can include:
 - Configuration
 - Database schema
 
-Defensive Engineering
+### Defensive Engineering
 
 Where applicable, skills should account for:
 
@@ -334,20 +349,22 @@ Where applicable, skills should account for:
 - Error handling
 - Least-privilege principles
 
-Validation
+### Validation
 
 Important skills should include concrete validation criteria.
 
 Examples:
 
+```text
 - [ ] Existing behavior remains intact
 - [ ] Error paths are covered
 - [ ] Tests pass
 - [ ] Types compile successfully
 - [ ] No secrets are exposed
 - [ ] Unnecessary dependencies were avoided
+```
 
-No Filler
+### No Filler
 
 Skills should not exist simply to increase the file count.
 
@@ -365,16 +382,16 @@ Every skill should provide a clear reason to exist.
 
 ---
 
-Contributing
+## Contributing
 
 Contributions are welcome.
 
 Before submitting a new skill, review:
 
-- "CONTRIBUTING.md" (CONTRIBUTING.md)
-- "docs/skill-format.md" (docs/skill-format.md)
-- "docs/naming-conventions.md" (docs/naming-conventions.md)
-- "docs/contribution-guide.md" (docs/contribution-guide.md)
+- [CONTRIBUTING.md](CONTRIBUTING.md)
+- [docs/skill-format.md](docs/skill-format.md)
+- [docs/naming-conventions.md](docs/naming-conventions.md)
+- [docs/contribution-guide.md](docs/contribution-guide.md)
 
 A good contribution should be:
 
@@ -387,11 +404,11 @@ A good contribution should be:
 
 ---
 
-Security
+## Security
 
 Security-related skills are intended for defensive engineering, secure development, testing, and remediation.
 
-Please review "SECURITY.md" (SECURITY.md) for security reporting guidance.
+Please review [SECURITY.md](SECURITY.md) for security reporting guidance.
 
 Never commit:
 
@@ -404,8 +421,9 @@ Never commit:
 
 ---
 
-License
+## License
 
-This project is licensed under the MIT License.
+This project is licensed under the **MIT License**.
 
-See "LICENSE" (LICENSE) for the complete license text.
+See [LICENSE](LICENSE) for the complete license text.
+
